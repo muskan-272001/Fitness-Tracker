@@ -30,14 +30,17 @@ app.get("/", async (req, res) => {
 });
 
 const connectDB = () => {
+  console.log("here 1")
   mongoose.set("strictQuery", true);
+  console.log(process.env.MONGODB_URL);
   mongoose
-    .connect(process.env.MONGODB_URL)
-    .then(() => console.log("Connected to Mongo DB"))
-    .catch((err) => {
-      console.error("failed to connect with mongo");
-      console.error(err);
-    });
+  .connect(process.env.MONGODB_URL)
+  .then(() => console.log("Connected to Mongo DB"))
+  .catch((err) => {
+    console.error("failed to connect with mongo");
+    console.error(err);
+  });
+  console.log("here 2")
 };
 
 const startServer = async () => {
